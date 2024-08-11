@@ -1,25 +1,25 @@
 import React from "react";
-import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Navbar as NavbarBs, Nav, Container } from "react-bootstrap";
 
-export function Navbar() {
+const Navbar: React.FC = () => {
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
-        <Nav className="me-auto">
-          <Nav.Link as={NavLink} to="/sign-up">
-            SignIn
+        <Nav className="mr-auto">
+          <Nav.Link as={Link} to="/">
+            Home
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/sign-in">
-            SignUp
+          <Nav.Link as={Link} to="/sign-in">
+            Sign In
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/about">
-            Product
+          <Nav.Link as={Link} to="/sign-up">
+            Sign Up
           </Nav.Link>
         </Nav>
       </Container>
     </NavbarBs>
   );
-}
+};
 
 export default Navbar;
