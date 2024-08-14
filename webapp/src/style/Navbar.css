@@ -1,0 +1,32 @@
+.nav-link-spacing {
+  margin-right: 1rem;
+}
+
+.navbar-brand img {
+  margin-right: 1rem;
+}
+
+.me-auto {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .sign-in-button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  margin-left: auto;
+}
+.navbar-logo {
+  width: 150px; /* Adjust width to fit your design */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 120px; /* Prevents the image from being too tall */
+  padding-left: 15px;
+  border-spacing: 50px;
+  padding-top: 15px;
+}
+
+.nav-link-spacing {
+  margin-left: 10px;
+  margin-right: 10px;
+}

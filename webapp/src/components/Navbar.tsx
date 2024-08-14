@@ -1,17 +1,14 @@
-// Navbar.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar as NavbarBs, Nav, Container, Button } from "react-bootstrap";
-import SignIn from "../pages/SignIn";
-import "./Navbar.css"; // Import the new CSS file
+import "../style/Navbar.css"; // Import the new CSS file
 
 const Navbar: React.FC = () => {
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
-      <Container>
+      <Container className="me-auto">
         <NavbarBs.Brand href="/" className="navbar-brand">
-          {/* Placeholder for logo */}
-          <img src="/public/Logo.png" alt="Logo" height="40" p-2 />
+          <img src="/Logo.png" alt="Logo" className="navbar-logo" />
         </NavbarBs.Brand>
         <Nav className="me-auto">
           <Nav.Link as={Link} to="/" className="nav-link-spacing">
@@ -25,7 +22,7 @@ const Navbar: React.FC = () => {
           </Nav.Link>
         </Nav>
         <Button
-          onClick={SignIn}
+          onClick={() => (window.location.href = "/sign-in")}
           variant="outline-success"
           className="sign-in-button"
         >
