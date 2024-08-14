@@ -12,10 +12,15 @@
 }
 
 .navbar .sign-in-button {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font: large;
   font-weight: bold;
   padding: 0.5rem 1.5rem;
   margin-left: auto;
+  margin-right: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-width: 0.3cap;
 }
 .navbar-logo {
   width: 150px; /* Adjust width to fit your design */
@@ -29,4 +34,20 @@
 .nav-link-spacing {
   margin-left: 10px;
   margin-right: 10px;
+}
+.navbar-logo {
+  width: 50px; /* Adjust width to fit your design */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 50px; /* Prevents the image from being too tall */
+}
+
+.nav-link-spacing {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.navbar-line {
+  height: 2px; /* Thickness of the line */
+  background-color: #000; /* Color of the line */
+  box-shadow: 0px 4px 2px -2px gray; /* Adds a shadow to the line */
 }

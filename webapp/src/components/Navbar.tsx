@@ -5,7 +5,7 @@ import "../style/Navbar.css"; // Import the new CSS file
 
 const Navbar: React.FC = () => {
   return (
-    <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
+    <NavbarBs sticky="top" className="bg-white shadow-l mb-3">
       <Container className="me-auto">
         <NavbarBs.Brand href="/" className="navbar-brand">
           <img src="/Logo.png" alt="Logo" className="navbar-logo" />
