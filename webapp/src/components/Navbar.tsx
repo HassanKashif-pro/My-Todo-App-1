@@ -5,12 +5,12 @@ import "../style/Navbar.css"; // Import the new CSS file
 
 const Navbar: React.FC = () => {
   return (
-    <NavbarBs sticky="top" className="bg-white shadow-l mb-3">
-      <Container className="me-auto">
+    <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
+      <Container className="d-flex justify-content-between align-items-center">
         <NavbarBs.Brand href="/" className="navbar-brand">
           <img src="/Logo.png" alt="Logo" className="navbar-logo" />
         </NavbarBs.Brand>
-        <Nav className="me-auto">
+        <Nav className="d-flex">
           <Nav.Link as={Link} to="/" className="nav-link-spacing">
             Home
           </Nav.Link>
@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
         <Button
           onClick={() => (window.location.href = "/sign-in")}
           variant="outline-success"
-          className="sign-in-button"
+          className="custom-sign-in-button ms-auto"
         >
           Sign In
         </Button>

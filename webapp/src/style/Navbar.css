@@ -11,17 +11,6 @@
   align-items: center;
 }
 
-.navbar .sign-in-button {
-  font-size: 1.25rem;
-  font: large;
-  font-weight: bold;
-  padding: 0.5rem 1.5rem;
-  margin-left: auto;
-  margin-right: 3rem;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  border-width: 0.3cap;
-}
 .navbar-logo {
   width: 150px; /* Adjust width to fit your design */
   height: auto; /* Maintain aspect ratio */
@@ -36,9 +25,9 @@
   margin-right: 10px;
 }
 .navbar-logo {
-  width: 50px; /* Adjust width to fit your design */
+  width: 150px; /* Adjust width to fit your design */
   height: auto; /* Maintain aspect ratio */
-  max-height: 50px; /* Prevents the image from being too tall */
+  max-height: 110px; /* Prevents the image from being too tall */
 }
 
 .nav-link-spacing {
@@ -50,4 +39,29 @@
   height: 2px; /* Thickness of the line */
   background-color: #000; /* Color of the line */
   box-shadow: 0px 4px 2px -2px gray; /* Adds a shadow to the line */
+}
+.custom-sign-in-button {
+  background: linear-gradient(90deg, #7b2cbf 0%, #9d4edd 100%);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.custom-sign-in-button:hover {
+  background: linear-gradient(90deg, #6a1b9a 0%, #8e24aa 100%);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.custom-sign-in-button:after {
+  content: "⇒";
+  margin-left: 8px;
+  font-size: 25px;
 }
