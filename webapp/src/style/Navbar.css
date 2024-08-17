@@ -1,5 +1,16 @@
-.nav-link-spacing {
-  margin-right: 1rem;
+.nav-link {
+  font-family: Arial, sans-serif; /* Choose a suitable font */
+  font-size: 16px; /* Font size */
+  color: #1a1a1a; /* Text color for non-active links */
+  text-decoration: none; /* Remove underline */
+}
+.nav-link:hover {
+  color: #0056b3; /* Text color on hover */
+}
+
+.nav-link.active {
+  color: #007bff; /* Text color for the active link (e.g., Product) */
+  font-weight: bold; /* Bold for the active link */
 }
 
 .navbar-brand img {
@@ -9,6 +20,11 @@
 .me-auto {
   display: flex;
   align-items: center;
+  padding-top: 36px;
+  padding-left: 56px;
+  padding-right: 56px;
+  padding-bottom: 24px;
+  flex-direction: row;
 }
 
 .navbar-logo {
@@ -24,12 +40,6 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-.navbar-logo {
-  width: 150px; /* Adjust width to fit your design */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 110px; /* Prevents the image from being too tall */
-}
-
 .nav-link-spacing {
   margin-left: 10px;
   margin-right: 10px;
@@ -53,6 +63,7 @@
   justify-content: center;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  margin-left: 1000px;
 }
 
 .custom-sign-in-button:hover {
