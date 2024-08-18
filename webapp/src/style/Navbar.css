@@ -1,8 +1,10 @@
 .nav-link {
-  font-family: Arial, sans-serif; /* Choose a suitable font */
-  font-size: 16px; /* Font size */
+  font-weight: 600;
+  font-size: 20px; /* Font size */
   color: #1a1a1a; /* Text color for non-active links */
   text-decoration: none; /* Remove underline */
+  padding-right: 10px;
+  padding-left: 10px;
 }
 .nav-link:hover {
   color: #0056b3; /* Text color on hover */
@@ -33,7 +35,6 @@
   max-height: 120px; /* Prevents the image from being too tall */
   padding-left: 15px;
   border-spacing: 50px;
-  padding-top: 15px;
 }
 
 .nav-link-spacing {
@@ -51,19 +52,19 @@
   box-shadow: 0px 4px 2px -2px gray; /* Adds a shadow to the line */
 }
 .custom-sign-in-button {
-  background: linear-gradient(90deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(90deg, #5b18e5 0%, #9d4edd 100%);
   border: none;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 7px rgb(91, 24, 229);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  margin-left: 1000px;
+  margin-left: auto;
 }
 
 .custom-sign-in-button:hover {
@@ -74,5 +75,5 @@
 .custom-sign-in-button:after {
   content: "⇒";
   margin-left: 8px;
-  font-size: 25px;
+  font-size: 22px;
 }
