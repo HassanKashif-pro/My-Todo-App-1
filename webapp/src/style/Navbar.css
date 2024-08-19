@@ -3,11 +3,11 @@
   font-size: 20px; /* Font size */
   color: #1a1a1a; /* Text color for non-active links */
   text-decoration: none; /* Remove underline */
-  padding-right: 10px;
+  padding-right: 20px;
   padding-left: 10px;
 }
 .nav-link:hover {
-  color: #0056b3; /* Text color on hover */
+  color: #7a00b3; /* Text color on hover */
 }
 
 .nav-link.active {
@@ -65,10 +65,12 @@
   text-transform: uppercase;
   transition: all 0.3s ease;
   margin-left: auto;
+  border-radius: 360px;
+  box-shadow: rgba(173, 27, 209, 0.192) 0px 0px 0px 4px;
+  opacity: 1;
 }
 
 .custom-sign-in-button:hover {
-  background: linear-gradient(90deg, #6a1b9a 0%, #8e24aa 100%);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 

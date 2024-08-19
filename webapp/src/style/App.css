@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.sign-in-page {
+  background-color: #741ead;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
