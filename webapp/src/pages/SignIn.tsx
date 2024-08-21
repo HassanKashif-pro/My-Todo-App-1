@@ -5,7 +5,7 @@ function SignIn() {
   return (
     <div className="sign-in-page">
       <div className="sign-in-container">
-        <h1 className="h1">Sign In To Stack</h1>
+        <h1 className="h1">Sign in to Stack</h1>
         <button className="google-sign-in">
           <img
             src="https://img.icons8.com/color/16/000000/google-logo.png"
