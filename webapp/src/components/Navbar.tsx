@@ -9,17 +9,6 @@ const Navbar: React.FC = () => {
       <NavbarBs.Brand href="/" className="navbar-brand">
         <img src="/Logo.png" alt="Logo" className="navbar-logo" />
       </NavbarBs.Brand>
-      <Nav className="d-flex">
-        <Nav.Link as={Link} to="/" className="nav-link">
-          Home
-        </Nav.Link>
-        <Nav.Link as={Link} to="/sign-in" className="nav-link">
-          Sign In
-        </Nav.Link>
-        <Nav.Link as={Link} to="/sign-up" className="nav-link">
-          Sign Up
-        </Nav.Link>
-      </Nav>
       <Button
         onClick={() => (window.location.href = "/sign-in")}
         variant="outline-success"

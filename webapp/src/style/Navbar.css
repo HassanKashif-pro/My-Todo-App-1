@@ -30,11 +30,12 @@
 }
 
 .navbar-logo {
-  width: 150px; /* Adjust width to fit your design */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 120px; /* Prevents the image from being too tall */
+  width: 180px; /* Adjust width to fit your design */
+  height: 50px; /* Maintain aspect ratio */
+  max-height: 180px; /* Prevents the image from being too tall */
   padding-left: 15px;
   border-spacing: 50px;
+  size: 120px;
 }
 
 .nav-link-spacing {
@@ -52,13 +53,12 @@
   box-shadow: 0px 4px 2px -2px gray; /* Adds a shadow to the line */
 }
 .custom-sign-in-button {
-  background: linear-gradient(90deg, #5b18e5 0%, #9d4edd 100%);
+  background-color: #94adcf;
   border: none;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 30px;
-  box-shadow: 0 4px 7px rgb(91, 24, 229);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -66,8 +66,6 @@
   transition: all 0.3s ease;
   margin-left: auto;
   border-radius: 360px;
-  box-shadow: rgba(173, 27, 209, 0.192) 0px 0px 0px 4px;
-  opacity: 1;
 }
 
 .custom-sign-in-button:hover {
@@ -75,7 +73,7 @@
 }
 
 .custom-sign-in-button:after {
-  content: "⇒";
+  content: ">";
   margin-left: 8px;
   font-size: 22px;
 }
