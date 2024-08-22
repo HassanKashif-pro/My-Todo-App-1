@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar"; // Ensure this path is correct
 import Home from "./pages/Home"; // Ensure these paths are correct
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Todo from "./pages/ToDo";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function AppContent() {
   const location = useLocation();
 
   // Define routes where the Navbar should not be shown
-  const hideNavbarRoutes = ["/sign-in", "/sign-up"];
+  const hideNavbarRoutes = ["/sign-in", "/sign-up", "/ToDo"];
 
   return (
     <>
@@ -35,6 +36,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/ToDo" element={<Todo />} />
         </Routes>
       </Container>
     </>
