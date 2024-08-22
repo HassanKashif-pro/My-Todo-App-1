@@ -1,11 +1,52 @@
-.logo {
-  width: 180px; /* Adjust width to fit your design */
-  height: 50px; /* Maintain aspect ratio */
-  max-height: 180px; /* Prevents the image from being too tall */
-  padding-left: 15px;
-  border-spacing: 50px;
-  size: 120px;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between elements */
+  padding: 30px 45px; /* Adjust padding as needed */
+  background-color: #38404b; /* Dark background color */
+  border-radius: 10px; /* Rounded corners for the navbar */
 }
-.logo.menu {
-  margin-left: auto;
+
+.icon-left,
+.icon-right {
+  color: #94adcf; /* Icon color */
+  font-size: 24px; /* Icon size */
+}
+.logo {
+  width: 200px;
+  height: 60px;
+}
+
+.task-form {
+  display: flex;
+  flex-grow: 1;
+  margin: 0 20px; /* Adjust to center the form */
+}
+
+.task-input {
+  flex-grow: 1;
+  border: none;
+  padding: 20px 50px;
+  border-radius: 25px;
+  margin-right: 60px;
+  background-color: #34495e; /* Input field background */
+  color: #ecf0f1; /* Text color */
+}
+
+.task-input::placeholder {
+  color: #7f8c8d; /* Placeholder color */
+}
+
+.task-button {
+  background-color: transparent;
+  border: none;
+  color: #94adcf; /* Button icon color */
+  margin-left: -40px; /* Overlay the button on the input */
+  cursor: pointer;
+  width: 40px; /* Button width */
+  outline: none;
+}
+
+.task-button:hover {
+  color: #5dade2; /* Change color on hover */
 }

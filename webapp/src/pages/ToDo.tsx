@@ -1,13 +1,25 @@
 import React from "react";
 import "../style/ToDo.css";
-import { Nav, Navbar as NavbarBs } from "react-bootstrap";
+import { Navbar as NavbarBs, Form, FormControl, Button } from "react-bootstrap";
+import { FaBars, FaDotCircle } from "react-icons/fa"; // You can replace with appropriate icons
 
 function Todo() {
   return (
-    <NavbarBs.Brand href="/" className="navbar-brand">
-      <img src="/Logo.png" alt="Logo" className="navbar-logo" />
-      <img src="/Logo.png" alt="Logo" className="navbar-logo" />
-    </NavbarBs.Brand>
+    <NavbarBs className="navbar">
+      <div className="icon-left">
+        <img src="Logo.png" alt="Logo" className="logo" />
+      </div>
+      <Form className="task-form">
+        <FormControl
+          type="text"
+          placeholder="Add new task"
+          className="task-input"
+        />
+        <Button variant="outline-light" className="task-button">
+          <FaBars />
+        </Button>
+      </Form>
+    </NavbarBs>
   );
 }
 
