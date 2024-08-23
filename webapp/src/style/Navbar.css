@@ -1,0 +1,79 @@
+.nav-link {
+  font-weight: 600;
+  font-size: 20px; /* Font size */
+  color: #1a1a1a; /* Text color for non-active links */
+  text-decoration: none; /* Remove underline */
+  padding-right: 20px;
+  padding-left: 10px;
+}
+.nav-link:hover {
+  color: #7a00b3; /* Text color on hover */
+}
+
+.nav-link.active {
+  color: #007bff; /* Text color for the active link (e.g., Product) */
+  font-weight: bold; /* Bold for the active link */
+}
+
+.navbar-brand img {
+  margin-right: 1rem;
+}
+
+.me-auto {
+  display: flex;
+  align-items: center;
+  padding-top: 36px;
+  padding-left: 56px;
+  padding-right: 56px;
+  padding-bottom: 24px;
+  flex-direction: row;
+}
+
+.navbar-logo {
+  width: 180px; /* Adjust width to fit your design */
+  height: 50px; /* Maintain aspect ratio */
+  max-height: 180px; /* Prevents the image from being too tall */
+  padding-left: 15px;
+  border-spacing: 50px;
+  size: 120px;
+}
+
+.nav-link-spacing {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.nav-link-spacing {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.navbar-line {
+  height: 2px; /* Thickness of the line */
+  background-color: #000; /* Color of the line */
+  box-shadow: 0px 4px 2px -2px gray; /* Adds a shadow to the line */
+}
+.custom-sign-in-button {
+  background-color: #94adcf;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-left: auto;
+  border-radius: 360px;
+}
+
+.custom-sign-in-button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.custom-sign-in-button:after {
+  content: ">";
+  margin-left: 8px;
+  font-size: 22px;
+}
