@@ -1,16 +1,11 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between elements */
-  padding: 40px 60px; /* Adjust padding as needed */
-  background-color: #38404b; /* Dark background color */
-  border-radius: 10px; /* Rounded corners for the navbar */
-}
-
-.icon-left,
-.icon-right {
-  color: #94adcf; /* Icon color */
-  font-size: 24px; /* Icon size */
+  justify-content: space-between;
+  padding: 60px 60px;
+  background-color: #38404b;
+  border-radius: 10px;
+  position: relative;
 }
 
 .logo {
@@ -19,38 +14,35 @@
 }
 
 .task-form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35%;
+  height: 50px;
   display: flex;
-  width: 35%; /* The task bar will take 35% of the navbar's width */
-  height: 60px;
-  justify-content: center; /* Center the task bar within its container */
-  margin-right: 500px;
+  justify-content: center;
 }
 
 .task-input {
-  width: 100%; /* Occupy the full width of the form */
+  width: 100%;
   border: none;
   padding: 10px 15px;
   border-radius: 25px;
-  background-color: #34495e; /* Input field background */
-  color: #ecf0f1; /* Text color */
+  background-color: #34495e;
+  color: #ecf0f1;
 }
 
 .task-input::placeholder {
-  color: #7f8c8d; /* Placeholder color */
-  font-weight: 400;
-  font-size: medium;
+  color: #7f8c8d;
 }
 
-.task-button {
-  background-color: transparent;
-  border: none;
-  color: #94adcf; /* Button icon color */
-  margin-left: -40px; /* Overlay the button on the input */
+.icon-right {
+  color: #94adcf;
+  font-size: 24px;
+  margin-right: 20px;
   cursor: pointer;
-  width: 40px; /* Button width */
-  outline: none;
 }
 
-.task-button:hover {
-  color: #5dade2; /* Change color on hover */
+.icon-right:hover {
+  color: #5dade2;
 }
