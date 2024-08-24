@@ -1,24 +1,24 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 60px 60px;
-  background-color: #38404b;
-  border-radius: 10px;
+  justify-content: space-between; /* Distribute space between items */
+  padding: 20px 60px; /* Adjusted padding */
+  background-color: #38404b; /* Navbar background color */
+  border-radius: 10px; /* Rounded corners */
   position: relative;
 }
 
 .logo {
-  width: 200px;
-  height: 55px;
+  width: 200px; /* Logo dimensions */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .task-form {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 35%;
-  height: 50px;
+  width: 35%; /* Adjust this width according to your design needs */
+  height: 50px; /* Consistent height for input and button */
   display: flex;
   justify-content: center;
 }
@@ -28,21 +28,23 @@
   border: none;
   padding: 10px 15px;
   border-radius: 25px;
-  background-color: #34495e;
-  color: #ecf0f1;
+  background-color: #34495e; /* Input background color */
+  color: #ecf0f1; /* Text color */
+  box-shadow: inset 0px -4px 10px rgba(255, 255, 255, 0.1),
+    /* White shadow at the bottom */ inset 0px 2px 15px rgba(0, 0, 0, 0.6); /* Black shadow at the top */
 }
 
 .task-input::placeholder {
-  color: #7f8c8d;
+  color: #7f8c8d; /* Placeholder text color */
 }
 
 .icon-right {
   color: #94adcf;
   font-size: 24px;
-  margin-right: 20px;
+  margin-left: auto; /* Push icon to the right */
   cursor: pointer;
 }
 
 .icon-right:hover {
-  color: #5dade2;
+  color: #5dade2; /* Hover color for the icon */
 }
