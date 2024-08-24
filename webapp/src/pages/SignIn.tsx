@@ -41,6 +41,9 @@ function SignIn() {
           <button type="submit" className="sign-in-btn">
             Sign In
           </button>
+          <div className="bottom-signup">
+            Don't have an account? <a href="/sign-up">Sign up</a>
+          </div>
         </form>
       </div>
     </div>
