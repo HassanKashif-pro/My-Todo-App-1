@@ -27,11 +27,11 @@
   width: 100%;
   border: none;
   padding: 10px 15px;
-  border-radius: 25px;
-  background-color: #34495e; /* Input background color */
+  border-radius: 15px;
+  background-color: #38404b; /* Input background color */
   color: #ecf0f1; /* Text color */
-  box-shadow: inset 0px -4px 10px rgba(255, 255, 255, 0.1),
-    /* White shadow at the bottom */ inset 0px 2px 15px rgba(0, 0, 0, 0.6); /* Black shadow at the top */
+  box-shadow: inset 0px -2.4px 5px rgba(247, 247, 247, 0.1),
+    inset 0px 3.8px 9px rgba(34, 30, 30, 0.5); /* Black shadow at the top */
 }
 
 .task-input::placeholder {
