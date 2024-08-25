@@ -18,7 +18,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 35%; /* Adjust this width according to your design needs */
-  height: 50px; /* Consistent height for input and button */
+  height: 59px; /* Consistent height for input and button */
   display: flex;
   justify-content: center;
 }
