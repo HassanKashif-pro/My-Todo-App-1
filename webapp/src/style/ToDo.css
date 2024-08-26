@@ -6,6 +6,7 @@
   background-color: #38404b; /* Navbar background color */
   border-radius: 10px; /* Rounded corners */
   position: relative;
+  margin-top: 45px;
 }
 
 .logo {
