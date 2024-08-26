@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-type MenuOption = {
+export type MenuOption = {
   value: string;
   label: string;
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar as NavbarBs, Nav, Button } from "react-bootstrap";
 import "../style/Navbar.css"; // Import the new CSS file
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 const Navbar: React.FC = () => {
   return (
@@ -14,7 +15,9 @@ const Navbar: React.FC = () => {
         variant="outline-success"
         className="custom-sign-in-button"
       >
-        Sign In
+        Sign Up
+        <MdOutlineArrowForwardIos className="icon-size" />
+        {/* Add the desired size class */}
       </Button>
     </NavbarBs>
   );
