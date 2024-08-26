@@ -1,7 +1,6 @@
 .menu-container {
   position: relative;
   display: inline-block;
-  cursor: pointer;
 }
 
 .menu-trigger {
