@@ -1,0 +1,20 @@
+.Useless-btn {
+  background-color: #34495e;
+  color: #ecf0f1;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  box-shadow: inset 0px -4px 10px rgba(255, 255, 255, 0.1),
+    /* White shadow at the bottom */ inset 0px 2px 15px rgba(0, 0, 0, 0.6),
+    /* Black shadow at the top */ 0px 5px 10px rgba(0, 0, 0, 0.2); /* External shadow */
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.Useless-btn:hover {
+  box-shadow: inset 0px -4px 10px rgba(255, 255, 255, 0.15),
+    inset 0px 2px 15px rgba(0, 0, 0, 0.7), 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
