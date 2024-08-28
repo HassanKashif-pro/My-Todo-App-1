@@ -12,9 +12,25 @@
   font-weight: bold;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
+  height: 90px;
+  width: 250px;
+  margin-left: 300px;
+  margin-top: 200px;
 }
 
 .Useless-btn:hover {
   box-shadow: inset 0px -4px 10px rgba(255, 255, 255, 0.15),
     inset 0px 2px 15px rgba(0, 0, 0, 0.7), 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+.Text {
+  font-size: 20px;
+  color: #ecf0f1;
+  margin-left: 300px;
+  margin-top: 100px;
+}
+.Text-1 {
+  font-size: 20px;
+  color: #ecf0f1;
+  margin-left: 300px;
+  margin-top: 50px;
 }
