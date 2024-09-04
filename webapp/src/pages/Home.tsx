@@ -2,11 +2,15 @@ import Sider from "antd/es/layout/Sider";
 import { Menu } from "../lib/Menu";
 import "../style/Home.css";
 import { Image, Button, Layout } from "antd";
-import { Link } from "react-router-dom";
-
+import { Link, redirect, useNavigate } from "react-router-dom";
 const { Header, Content, Footer } = Layout;
 
 function Home() {
+  const navigate = useNavigate(); // Initialize navigate
+
+  const getStartedBtn = () => {
+    navigate("/todo"); // Use navigate instead of redirect
+  };
   return (
     <>
       <Layout style={{ minHeight: "100vh" }}>
@@ -27,7 +31,9 @@ function Home() {
           </Link>
         </Header>
         <Content style={{ padding: "0 48px", backgroundColor: "#38404b" }}>
-          <Button className="Useless-btn">Get Started {">"}</Button>
+          <Button className="Useless-btn" onClick={getStartedBtn}>
+            Get Started {">"}
+          </Button>
           <div className="Text">Simple Todo List</div>
           <div className="Text-1">My very own custom todo list</div>
         </Content>
