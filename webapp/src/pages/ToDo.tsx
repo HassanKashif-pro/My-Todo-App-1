@@ -1,44 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import "../style/ToDo.css";
-import { Navbar as NavbarBs, Form, FormControl } from "react-bootstrap";
+import { Layout, Input, Button, Image } from "antd";
 import { FaBars } from "react-icons/fa";
-import { Menu, MenuOption } from "../lib/Menu";
+import { Content } from "antd/es/layout/layout";
+import { Link } from "react-router-dom";
 
-const options: MenuOption[] = [
-  { value: "1", label: "Option 1" },
-  { value: "2", label: "Option 2" },
-  { value: "3", label: "Option 3" },
-];
+const { Header } = Layout;
+
 function Todo() {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
-
   return (
-    <NavbarBs className="navbar">
-      {/* Logo on the left */}
-      <img src="Logo.png" alt="Logo" className="logo" />
-
-      {/* Task input centered */}
-      <Form className="task-form">
-        <FormControl
-          type="text"
-          placeholder="Add new task"
-          className="task-input"
-        />
-      </Form>
-
-      {/* Icon on the right */}
-      <div className="icon-right">
-        <FaBars />
-        <Menu
-          value={selectedOption}
-          onChange={(value: string) => {
-            const option = options.find((opt) => opt.value === value);
-            if (option) setSelectedOption(option);
-          }}
-          options={options}
-        />
-      </div>
-    </NavbarBs>
+    <Layout style={{ minHeight: "100vh" }}>
+      <Header className="navbar">
+        <Link to="/Home">
+          <Image
+            src="/Logo.png"
+            alt="/Home"
+            preview={false}
+            style={{ height: "70px" }}
+          />
+        </Link>
+        <div className="task-form">
+          <Input
+            type="text"
+            placeholder="Add new task"
+            className="task-input"
+          />
+          <Button
+            style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}
+          ></Button>
+        </div>
+      </Header>
+      <Content></Content>
+    </Layout>
   );
 }
 

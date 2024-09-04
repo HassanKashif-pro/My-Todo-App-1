@@ -3,10 +3,9 @@
   align-items: center;
   justify-content: space-between; /* Distribute space between items */
   padding: 20px 60px; /* Adjusted padding */
-  background-color: #38404b; /* Navbar background color */
-  border-radius: 10px; /* Rounded corners */
+  background-color: #38404b;
   position: relative;
-  margin-top: 45px;
+  height: 150px;
 }
 
 .logo {
