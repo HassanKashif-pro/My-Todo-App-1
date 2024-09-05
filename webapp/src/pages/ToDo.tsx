@@ -25,9 +25,7 @@ function Todo() {
             placeholder="Add new task"
             className="task-input"
           />
-          <Button
-            style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}
-          ></Button>
+          <Button className="arrow-btn"></Button>
         </div>
       </Header>
       <Content></Content>

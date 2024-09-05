@@ -33,18 +33,13 @@
   box-shadow: inset 0px -2.4px 5px rgba(247, 247, 247, 0.1),
     inset 0px 3.8px 9px rgba(34, 30, 30, 0.5); /* Black shadow at the top */
 }
-
+.task-input:hover {
+  background-color: #38404b; /* Hover background color */
+  box-shadow: inset 0px -2.4px 5px rgba(247, 247, 247, 0.1),
+    inset 0px 3.8px 9px rgba(34, 30, 30, 0.5); /* Hover effect */
+}
 .task-input::placeholder {
   color: #7f8c8d; /* Placeholder text color */
 }
-
-.icon-right {
-  color: #94adcf;
-  font-size: 24px;
-  margin-left: auto; /* Push icon to the right */
-  cursor: pointer;
-}
-
-.icon-right:hover {
-  color: #5dade2; /* Hover color for the icon */
+.arrow-btn {
 }
