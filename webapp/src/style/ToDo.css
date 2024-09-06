@@ -34,7 +34,7 @@
     inset 0px 3.8px 9px rgba(34, 30, 30, 0.5); /* Black shadow at the top */
 }
 .task-input:hover {
-  background-color: #38404b; /* Hover background color */
+  background-color: #38404b !important; /* Hover background color */
   box-shadow: inset 0px -2.4px 5px rgba(247, 247, 247, 0.1),
     inset 0px 3.8px 9px rgba(34, 30, 30, 0.5); /* Hover effect */
 }

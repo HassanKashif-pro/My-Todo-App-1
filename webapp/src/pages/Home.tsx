@@ -1,5 +1,3 @@
-import Sider from "antd/es/layout/Sider";
-import { Menu } from "../lib/Menu";
 import "../style/Home.css";
 import { Image, Button, Layout } from "antd";
 import { Link, redirect, useNavigate } from "react-router-dom";
