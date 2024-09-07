@@ -11,7 +11,7 @@
     /* White shadow at the bottom */ 0px 2px 15px rgba(0, 0, 0, 0.6),
     /* Black shadow at the top */ 0px 5px 15px rgba(0, 0, 0, 0.2); /* External shadow */
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
   height: 90px;

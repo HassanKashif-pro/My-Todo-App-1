@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 const { Header } = Layout;
 
 function Todo() {
+  const submitButton = () => {
+    console.log("Submit button clicked");
+  };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header className="navbar">
@@ -25,7 +28,9 @@ function Todo() {
             placeholder="Add new task"
             className="task-input"
           />
-          <Button className="arrow-btn"></Button>
+          <Button className="arrow-btn" onSubmit={submitButton}>
+            {">"}
+          </Button>
         </div>
       </Header>
       <Content></Content>

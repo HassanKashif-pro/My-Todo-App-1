@@ -42,4 +42,17 @@
   color: #7f8c8d; /* Placeholder text color */
 }
 .arrow-btn {
+  position: fixed;
+  bottom: 18px; /* Distance from the bottom */
+  right: 10px; /* Distance from the right */
+  z-index: 1000; /* To make sure it appears on top */
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+}
+.arrow-btn:hover {
+  background-color: transparent !important; /* Hover color */
+  color: #ffffff !important; /* Hover text color */
 }
