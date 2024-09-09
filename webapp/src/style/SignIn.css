@@ -1,6 +1,7 @@
 /* Container for the entire sign-in page */
 body {
   background-color: #38404b;
+  overflow: hidden;
 }
 .sign-in-page {
   width: 100%;
@@ -16,9 +17,10 @@ body {
 /* Container for the sign-in form and related elements */
 .sign-in-container {
   background-color: white;
+  position: sticky;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: -20px 40px 50px rgba(0, 0, 0, 0.4);
   width: 500px;
   height: 600px;
   text-align: center;
