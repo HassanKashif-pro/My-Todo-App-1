@@ -1,8 +1,13 @@
+body {
+  background-color: #38404b;
+  overflow: hidden;
+}
+
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Distribute space between items */
-  padding: 20px 60px; /* Adjusted padding */
+  padding: 110px 60px; /* Adjusted padding */
   background-color: #38404b;
   position: relative;
   height: 150px;
@@ -55,4 +60,39 @@
 .arrow-btn:hover {
   background-color: transparent !important; /* Hover color */
   color: #ffffff !important; /* Hover text color */
+}
+.content {
+  background-color: #38404b;
+  overflow: hidden;
+}
+.h1 {
+  color: #94adcf; /* Text color */
+  font-size: 3rem; /* Font size */
+  margin-left: 20rem;
+  font-weight: 400;
+  font-family: "Roboto";
+}
+.task-list {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 50%;
+}
+
+.task-list.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .task-list {
+    width: 100%;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
 }

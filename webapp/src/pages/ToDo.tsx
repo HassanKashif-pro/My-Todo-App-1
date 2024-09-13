@@ -1,9 +1,10 @@
 import React from "react";
 import "../style/ToDo.css";
-import { Layout, Input, Button, Image } from "antd";
+import { Layout, Input, Button, Image, Flex, AutoComplete } from "antd";
 import { FaBars } from "react-icons/fa";
 import { Content } from "antd/es/layout/layout";
 import { Link } from "react-router-dom";
+import TaskCards from "../lib/TaskCards";
 
 const { Header } = Layout;
 
@@ -33,7 +34,12 @@ function Todo() {
           </Button>
         </div>
       </Header>
-      <Content></Content>
+      <Content className="content">
+        <div>
+          <TaskCards />
+          <h1 className="h1">Completed</h1>
+        </div>
+      </Content>
     </Layout>
   );
 }
