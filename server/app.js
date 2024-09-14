@@ -1,7 +1,9 @@
+import dotenv from "dotenv";
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv").config();
+dotenv.config();
 
 // Create an Express app
 const app = express();
@@ -11,12 +13,11 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB connection string (ensure .env has MONGO_URI defined)
-const mongoURI =
-  "mongodb+srv://hassankashifpro:bft3VoPQoksrIahu@todocluster.d9fwo.mongodb.net/?retryWrites=true&w=majority&appName=TodoCluster";
+const mongoURI = process.env.MONGO_URI;
 
 // Check if Mongo URI is available
 if (!mongoURI) {
-  console.error("Mongo URI is not defined in .env file");
+  console.error(error);
   process.exit(1); // Stop the server if there's no URI
 }
 
