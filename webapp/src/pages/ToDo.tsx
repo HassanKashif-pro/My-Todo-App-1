@@ -1,17 +1,39 @@
-import React from "react";
 import "../style/ToDo.css";
 import { Layout, Input, Button, Image, Flex, AutoComplete } from "antd";
 import { FaBars } from "react-icons/fa";
 import { Content } from "antd/es/layout/layout";
 import { Link } from "react-router-dom";
 import TaskCards from "../lib/TaskCards";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const { Header } = Layout;
 
-function Todo() {
+interface Task {
+  _id: string;
+  title: string;
+  isCompleted: boolean;
+}
+
+const TodoApp: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]); // Type for tasks array
+  const [newTask, setNewTask] = useState<string>(""); // Type for new task input
+
   const submitButton = () => {
     console.log("Submit button clicked");
   };
+
+  const handleAddTask = () => {
+    if (newTask.trim()) {
+      axios
+        .post<Task>("http://localhost:3000/todo", { title: newTask })
+        .then((response) => {
+          setTasks([...tasks, response.data]); // Add new task to state
+          setNewTask(""); // Clear input field
+        });
+    }
+  };
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header className="navbar">
@@ -42,6 +64,6 @@ function Todo() {
       </Content>
     </Layout>
   );
-}
+};
 
-export default Todo;
+export default TodoApp;

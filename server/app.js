@@ -10,8 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB connection string (replace with your credentials)
-const mongoURI =
-  "mongodb+srv://hassankashifpro:NtGaqFt2QKd4Gkv@todocluster.d9fwo.mongodb.net/?retryWrites=true&w=majority";
+const mongoURI = process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose
