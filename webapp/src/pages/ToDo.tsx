@@ -1,9 +1,8 @@
 import "../style/ToDo.css";
-import { Layout, Input, Button, Image, Flex, AutoComplete } from "antd";
+import { Layout, Input, Button, Image } from "antd";
 import { FaBars } from "react-icons/fa";
 import { Content } from "antd/es/layout/layout";
 import { Link } from "react-router-dom";
-import TaskCards from "../lib/TaskCards";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -19,9 +18,12 @@ const TodoApp: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]); // Type for tasks array
   const [newTask, setNewTask] = useState<string>(""); // Type for new task input
 
-  const submitButton = () => {
-    console.log("Submit button clicked");
-  };
+  // Fetch tasks from the backend on component load
+  useEffect(() => {
+    axios.get<Task[]>("http://localhost:3000/todo").then((response) => {
+      setTasks(response.data);
+    });
+  }, []);
 
   const handleAddTask = () => {
     if (newTask.trim()) {
@@ -32,6 +34,33 @@ const TodoApp: React.FC = () => {
           setNewTask(""); // Clear input field
         });
     }
+  };
+
+  const handleToggleComplete = (id: string) => {
+    axios.patch(`http://localhost:3000/todo/${id}`).then((response) => {
+      const updatedTasks = tasks.map((task) =>
+        task._id === response.data._id ? response.data : task
+      );
+      setTasks(updatedTasks);
+    });
+  };
+
+  const renderTaskList = (tasks: Task[], completed: boolean) => {
+    return tasks
+      .filter((task) => task.isCompleted === completed)
+      .map((task) => (
+        <div
+          key={task._id}
+          className={`task-card ${completed ? "completed" : ""}`}
+        >
+          <input
+            type="checkbox"
+            checked={task.isCompleted}
+            onChange={() => handleToggleComplete(task._id)}
+          />
+          <span>{task.title}</span>
+        </div>
+      ));
   };
 
   return (
@@ -50,17 +79,20 @@ const TodoApp: React.FC = () => {
             type="text"
             placeholder="Add new task"
             className="task-input"
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
           />
-          <Button className="arrow-btn" onSubmit={submitButton}>
+          <Button className="arrow-btn" onClick={handleAddTask}>
             {">"}
           </Button>
         </div>
       </Header>
       <Content className="content">
-        <div>
-          <TaskCards />
-          <h1 className="h1">Completed</h1>
-        </div>
+        <h1>Incomplete Tasks</h1>
+        <div className="task-list">{renderTaskList(tasks, false)}</div>
+
+        <h1 className="h1">Completed Tasks</h1>
+        <div className="task-list">{renderTaskList(tasks, true)}</div>
       </Content>
     </Layout>
   );
