@@ -1,9 +1,7 @@
-import dotenv from "dotenv";
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-dotenv.config();
+require("dotenv").config(); // Ensure the .env file is correctly loaded
 
 // Create an Express app
 const app = express();
@@ -17,7 +15,7 @@ const mongoURI = process.env.MONGO_URI;
 
 // Check if Mongo URI is available
 if (!mongoURI) {
-  console.error(error);
+  console.error("Error: MONGO_URI is not defined in .env");
   process.exit(1); // Stop the server if there's no URI
 }
 
@@ -36,8 +34,8 @@ const TaskSchema = new mongoose.Schema({
 // Create a Mongoose model
 const Task = mongoose.model("Task", TaskSchema);
 
-// POST endpoint to handle incoming data
-app.post("/api/tasks", async (req, res) => {
+// POST endpoint to handle incoming data (use POST for creating new tasks)
+app.post("/todo", async (req, res) => {
   try {
     const { title, description } = req.body;
 
@@ -59,7 +57,7 @@ app.post("/api/tasks", async (req, res) => {
 console.log("Mongo URI:", mongoURI);
 
 // Start the server
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
