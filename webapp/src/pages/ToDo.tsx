@@ -1,6 +1,5 @@
 import "../style/ToDo.css";
 import { Layout, Input, Button, Image } from "antd";
-import { FaBars } from "react-icons/fa";
 import { Content } from "antd/es/layout/layout";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -20,7 +19,7 @@ const TodoApp: React.FC = () => {
 
   // Fetch tasks from the backend on component load
   useEffect(() => {
-    axios.get<Task[]>("http://localhost:3000/todo").then((response) => {
+    axios.get<Task[]>("http://localhost:3001/todo").then((response) => {
       setTasks(response.data);
     });
   }, []);
@@ -28,7 +27,7 @@ const TodoApp: React.FC = () => {
   const handleAddTask = () => {
     if (newTask.trim()) {
       axios
-        .post<Task>("http://localhost:3000/todo", { title: newTask })
+        .post<Task>("http://localhost:3001/todo", { title: newTask })
         .then((response) => {
           setTasks([...tasks, response.data]); // Add new task to state
           setNewTask(""); // Clear input field
@@ -37,7 +36,7 @@ const TodoApp: React.FC = () => {
   };
 
   const handleToggleComplete = (id: string) => {
-    axios.patch(`http://localhost:3000/todo/${id}`).then((response) => {
+    axios.patch(`http://localhost:3001/todo${id}`).then((response) => {
       const updatedTasks = tasks.map((task) =>
         task._id === response.data._id ? response.data : task
       );
