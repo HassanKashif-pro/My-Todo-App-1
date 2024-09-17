@@ -5,29 +5,30 @@ import { Checkbox } from "antd";
 const TaskCards: React.FC = () => {
   // Define tasks in the state
   const [tasks, setTasks] = useState([
-    { text: "Go shopping", completed: false },
-    { text: "Short exercise", completed: false },
-    { text: "Meditation", completed: false },
+    { id: 1, text: "Go shopping", completed: false },
+    { id: 2, text: "Short exercise", completed: false },
+    { id: 3, text: "Meditation", completed: false },
   ]);
 
   // Handle checkbox state change
-  const handleCheckboxChange = (index: number) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index].completed = !updatedTasks[index].completed; // Toggle completed status
+  const handleCheckboxChange = (id: number) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    );
     setTasks(updatedTasks); // Update state with the toggled task
   };
 
   return (
     <div>
       {/* Incomplete tasks */}
-      <div className="top-cards">
+      <div className="cards">
         {tasks
           .filter((task) => !task.completed) // Only show incomplete tasks here
-          .map((task, index) => (
-            <div key={index} className="task-list">
+          .map((task) => (
+            <div key={task.id} className="task-list">
               <Checkbox
                 checked={task.completed}
-                onChange={() => handleCheckboxChange(index)}
+                onChange={() => handleCheckboxChange(task.id)}
                 className="check-box"
               />
               {task.text}
@@ -35,23 +36,22 @@ const TaskCards: React.FC = () => {
           ))}
       </div>
 
+      <h1 className="h1-todo">Completed Tasks</h1>
+
       {/* Completed tasks */}
-      <div className="bottom-cards">
-        <h1 className="h1">Completed Tasks</h1>
-        <div className="task-list">
-          {tasks
-            .filter((task) => task.completed) // Only show completed tasks here
-            .map((task, index) => (
-              <div key={index} className="task-list">
-                <Checkbox
-                  checked={task.completed}
-                  onChange={() => handleCheckboxChange(index)} // Checkbox will allow moving task back to incomplete
-                  className="check-box"
-                />
-                {task.text}
-              </div>
-            ))}
-        </div>
+      <div className="cards">
+        {tasks
+          .filter((task) => task.completed) // Only show completed tasks here
+          .map((task) => (
+            <div key={task.id} className="task-list">
+              <Checkbox
+                checked={task.completed}
+                onChange={() => handleCheckboxChange(task.id)} // Checkbox will allow moving task back to incomplete
+                className="check-box"
+              />
+              {task.text}
+            </div>
+          ))}
       </div>
     </div>
   );
