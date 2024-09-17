@@ -46,6 +46,16 @@ body {
 .task-input::placeholder {
   color: #7f8c8d; /* Placeholder text color */
 }
+.task-input:focus {
+  width: 100%;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: #38404b; /* Input background color */
+  color: #ecf0f1; /* Text color */
+  box-shadow: inset 0px -2.4px 5px rgba(247, 247, 247, 0.1),
+    inset 0px 3.8px 9px rgba(34, 30, 30, 0.5); /* Black shadow at the top */
+}
 .arrow-btn {
   position: fixed;
   bottom: 18px; /* Distance from the bottom */
@@ -65,20 +75,27 @@ body {
   background-color: #38404b;
   overflow: hidden;
 }
-.h1 {
+.h1-todo {
   color: #94adcf; /* Text color */
   font-size: 3rem; /* Font size */
   margin-left: 20rem;
   font-weight: 400;
+  height: flex;
   font-family: "Roboto";
 }
 .task-list {
-  background-color: white;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 50%;
+  display: flex;
+  color: #94adcf;
+  align-items: center;
+  background-color: #38404b; /* Adjust to your background color */
+  padding: 10px 15px;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.1),
+    /* Bottom-right shadow */ -6px -7px 8px rgba(255, 255, 255, 0.027); /* Top-left inverted shadow */
+  margin-bottom: 30px;
+  gap: 20px; /* Space between the tasks */
+  justify-items: center; /* Align items horizontally in the center */
+  width: 50%; /* Full width */
 }
 
 .task-list.completed {
@@ -86,10 +103,27 @@ body {
   color: #888;
 }
 
+.cards {
+  background-color: transparent;
+  font-weight: 500;
+  font-size: x-large;
+  padding: 15px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 20px; /* Space between the cards */
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  padding-left: 7rem; /* Horizontal padding */
+  padding-right: 7rem; /* Horizontal padding */
+  box-sizing: border-box; /* Include padding within the width */
+}
+
 /* Responsiveness */
 @media (max-width: 768px) {
   .task-list {
-    width: 100%;
+    grid-template-columns: 1fr; /* Stack tasks in one column on smaller screens */
   }
 
   .task-form {
