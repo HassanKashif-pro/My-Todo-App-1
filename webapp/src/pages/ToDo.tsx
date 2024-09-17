@@ -4,6 +4,7 @@ import { Content } from "antd/es/layout/layout";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import TaskCards from "../lib/TaskCards";
 
 const { Header } = Layout;
 
@@ -18,31 +19,31 @@ const TodoApp: React.FC = () => {
   const [newTask, setNewTask] = useState<string>(""); // Type for new task input
 
   // Fetch tasks from the backend on component load
-  useEffect(() => {
-    axios.get<Task[]>("http://localhost:3001/todo").then((response) => {
-      setTasks(response.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get<Task[]>("http://localhost:3001/todo").then((response) => {
+  //     setTasks(response.data);
+  //   });
+  // }, []);
 
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      axios
-        .post<Task>("http://localhost:3001/todo", { title: newTask })
-        .then((response) => {
-          setTasks([...tasks, response.data]); // Add new task to state
-          setNewTask(""); // Clear input field
-        });
-    }
-  };
+  // const handleAddTask = () => {
+  //   if (newTask.trim()) {
+  //     axios
+  //       .post<Task>("http://localhost:3001/todo", { title: newTask })
+  //       .then((response) => {
+  //         setTasks([...tasks, response.data]); // Add new task to state
+  //         setNewTask(""); // Clear input field
+  //       });
+  //   }
+  // };
 
-  const handleToggleComplete = (id: string) => {
-    axios.patch(`http://localhost:3001/todo${id}`).then((response) => {
-      const updatedTasks = tasks.map((task) =>
-        task._id === response.data._id ? response.data : task
-      );
-      setTasks(updatedTasks);
-    });
-  };
+  // const handleToggleComplete = (id: string) => {
+  //   axios.patch(`http://localhost:3001/todo${id}`).then((response) => {
+  //     const updatedTasks = tasks.map((task) =>
+  //       task._id === response.data._id ? response.data : task
+  //     );
+  //     setTasks(updatedTasks);
+  //   });
+  // };
 
   const renderTaskList = (tasks: Task[], completed: boolean) => {
     return tasks
@@ -55,7 +56,7 @@ const TodoApp: React.FC = () => {
           <input
             type="checkbox"
             checked={task.isCompleted}
-            onChange={() => handleToggleComplete(task._id)}
+            // onChange={() => handleToggleComplete(task._id)}
           />
           <span>{task.title}</span>
         </div>
@@ -81,17 +82,11 @@ const TodoApp: React.FC = () => {
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
           />
-          <Button className="arrow-btn" onClick={handleAddTask}>
-            {">"}
-          </Button>
+          <Button className="arrow-btn">{">"}</Button>
         </div>
       </Header>
       <Content className="content">
-        <h1>Incomplete Tasks</h1>
-        <div className="task-list">{renderTaskList(tasks, false)}</div>
-
-        <h1 className="h1">Completed Tasks</h1>
-        <div className="task-list">{renderTaskList(tasks, true)}</div>
+        <TaskCards />
       </Content>
     </Layout>
   );
