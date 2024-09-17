@@ -130,3 +130,36 @@ body {
     flex-direction: column;
   }
 }
+/* Custom checkbox size and color */
+.check-box .ant-checkbox-inner {
+  border-radius: 40px;
+  border-color: #94adcf; /* Border color of the checkbox when unchecked */
+  color: #38404b;
+}
+
+.check-box .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #94adcf; /* Background color of the checkbox when checked */
+  border-color: #94adcf; /* Border color of the checkbox when checked */
+  border-width: 4px;
+}
+
+.check-box .ant-checkbox-unchecked .ant-checkbox-inner {
+  background-color: #38404b; /* Background color of the checkbox when unchecked */
+  border-color: #94adcf; /* Border color of the checkbox when unchecked */
+  border-width: 4px;
+}
+
+.check-box .ant-checkbox-checked .ant-checkbox-inner::after {
+  display: none; /* Remove the tick mark */
+}
+
+/* Make the checkbox transparent inside when disabled */
+.check-box .ant-checkbox-disabled .ant-checkbox-inner {
+  background-color: transparent; /* Make the inside transparent */
+  border-color: #d9d9d9; /* Optional: Change the border color when disabled */
+}
+
+/* Optional: Customize the checkbox opacity when disabled */
+.check-box .ant-checkbox-disabled {
+  opacity: 0.5; /* Make the checkbox look more faded when disabled */
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../style/ToDo.css";
 import { Checkbox } from "antd";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const TaskCards: React.FC = () => {
   // Define tasks in the state
@@ -47,7 +48,7 @@ const TaskCards: React.FC = () => {
               <Checkbox
                 checked={task.completed}
                 onChange={() => handleCheckboxChange(task.id)} // Checkbox will allow moving task back to incomplete
-                className="check-box"
+                className="check-box" // Apply custom class
               />
               {task.text}
             </div>
