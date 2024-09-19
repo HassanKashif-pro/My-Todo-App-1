@@ -33,13 +33,28 @@ const TaskSchema = new mongoose.Schema({
 
 // Create a Mongoose model
 const Task = mongoose.model("Task", TaskSchema);
+app.get("/todo", (req, res) => {
+  // Fetch todos from the DB and send them back to the client
+  Task.find()
+    .then((tasks) => {
+      if (!tasks || tasks.length === 0) {
+        // If there are no todos, send an empty array
+        return res.json([]);
+      }
+      // Otherwise, send the tasks
+      return res.json(tasks);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).json({ error: "Failed to fetch tasks" });
+    });
+});
 
 // POST endpoint to handle incoming data (use POST for creating new tasks)
 app.post("/todo", async (req, res) => {
   try {
     const { title, description } = req.body;
 
-    // Ensure title is present
     if (!title) {
       return res.status(400).json({ error: "Title is required" });
     }
@@ -57,7 +72,7 @@ app.post("/todo", async (req, res) => {
 console.log("Mongo URI:", mongoURI);
 
 // Start the server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

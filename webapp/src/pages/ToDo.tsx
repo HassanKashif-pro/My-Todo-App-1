@@ -18,32 +18,31 @@ const TodoApp: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]); // Type for tasks array
   const [newTask, setNewTask] = useState<string>(""); // Type for new task input
 
-  // Fetch tasks from the backend on component load
-  // useEffect(() => {
-  //   axios.get<Task[]>("http://localhost:3001/todo").then((response) => {
-  //     setTasks(response.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get<Task[]>("http://localhost:4000/todo").then((response) => {
+      setTasks(response.data);
+    });
+  }, []);
 
-  // const handleAddTask = () => {
-  //   if (newTask.trim()) {
-  //     axios
-  //       .post<Task>("http://localhost:3001/todo", { title: newTask })
-  //       .then((response) => {
-  //         setTasks([...tasks, response.data]); // Add new task to state
-  //         setNewTask(""); // Clear input field
-  //       });
-  //   }
-  // };
+  const handleAddTask = () => {
+    if (newTask.trim()) {
+      axios
+        .post<Task>("http://localhost:4000/todo", { title: newTask })
+        .then((response) => {
+          setTasks([...tasks, response.data]); // Add new task to state
+          setNewTask(""); // Clear input field
+        });
+    }
+  };
 
-  // const handleToggleComplete = (id: string) => {
-  //   axios.patch(`http://localhost:3001/todo${id}`).then((response) => {
-  //     const updatedTasks = tasks.map((task) =>
-  //       task._id === response.data._id ? response.data : task
-  //     );
-  //     setTasks(updatedTasks);
-  //   });
-  // };
+  const handleToggleComplete = (id: string) => {
+    axios.patch(`http://localhost:4000/todo${id}`).then((response) => {
+      const updatedTasks = tasks.map((task) =>
+        task._id === response.data._id ? response.data : task
+      );
+      setTasks(updatedTasks);
+    });
+  };
 
   const renderTaskList = (tasks: Task[], completed: boolean) => {
     return tasks
