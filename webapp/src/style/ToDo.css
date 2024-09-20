@@ -3,6 +3,20 @@ body {
   overflow: hidden;
 }
 
+.crossBtn {
+  background-color: transparent;
+  border: none;
+  color: #94adcf;
+  margin-left: auto;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.crossBtn:hover {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
 .navbar {
   display: flex;
   align-items: center;

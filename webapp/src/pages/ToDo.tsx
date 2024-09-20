@@ -17,6 +17,7 @@ interface Task {
 const TodoApp: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]); // Type for tasks array
   const [newTask, setNewTask] = useState<string>(""); // Type for new task input
+  const [isLoading, setIsLoading] = useState(false); // Loading state
 
   useEffect(() => {
     axios.get<Task[]>("http://localhost:4000/todo").then((response) => {
@@ -26,12 +27,24 @@ const TodoApp: React.FC = () => {
 
   const handleAddTask = () => {
     if (newTask.trim()) {
+      setIsLoading(true); // Set loading state to true before making the request
+
       axios
-        .post<Task>("http://localhost:4000/todo", { title: newTask })
+        .post("http://localhost:4000/todo", { title: newTask })
         .then((response) => {
           setTasks([...tasks, response.data]); // Add new task to state
           setNewTask(""); // Clear input field
+        })
+        .catch((error) => {
+          console.error("Error adding task:", error);
+          // Optionally show an error message to the user
+          alert("Failed to add task. Please try again.");
+        })
+        .finally(() => {
+          setIsLoading(false); // Reset loading state after the request completes
         });
+    } else {
+      alert("Task cannot be empty!");
     }
   };
 
@@ -81,7 +94,9 @@ const TodoApp: React.FC = () => {
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
           />
-          <Button className="arrow-btn">{">"}</Button>
+          <Button className="arrow-btn" onClick={handleAddTask}>
+            {">"}
+          </Button>
         </div>
       </Header>
       <Content className="content">
