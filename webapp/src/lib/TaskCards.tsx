@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../style/ToDo.css";
-import { Checkbox } from "antd";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
+import { Button, Checkbox } from "antd";
+import axios from "axios";
 
 const TaskCards: React.FC = () => {
   // Define tasks in the state
@@ -18,7 +18,17 @@ const TaskCards: React.FC = () => {
     );
     setTasks(updatedTasks); // Update state with the toggled task
   };
-
+  const deleteTask = () => {
+    const tasksToDelete = tasks.filter((task) => task.completed);
+    tasksToDelete.map((task) => {
+      axios.delete(`http://localhost:4000/todo/${task.id}`).then((response) => {
+        const updatedTasks = tasks.filter(
+          (task) => task.id !== response.data.id
+        );
+        setTasks(updatedTasks);
+      });
+    });
+  };
   return (
     <div>
       {/* Incomplete tasks */}
@@ -33,6 +43,9 @@ const TaskCards: React.FC = () => {
                 className="check-box"
               />
               {task.text}
+              <Button className="crossBtn" onClick={deleteTask}>
+                Ｘ
+              </Button>
             </div>
           ))}
       </div>
@@ -51,6 +64,9 @@ const TaskCards: React.FC = () => {
                 className="check-box" // Apply custom class
               />
               {task.text}
+              <Button className="crossBtn" onClick={deleteTask}>
+                Ｘ
+              </Button>
             </div>
           ))}
       </div>

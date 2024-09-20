@@ -33,15 +33,28 @@ const TaskSchema = new mongoose.Schema({
 
 // Create a Mongoose model
 const Task = mongoose.model("Task", TaskSchema);
+
+app.delete("/todo", async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const deletedTask = await Task.findByIdAndDelete(taskId);
+
+    if (!deletedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    res.status(200).json({ message: "Task deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to delete task" });
+  }
+});
+
 app.get("/todo", (req, res) => {
-  // Fetch todos from the DB and send them back to the client
   Task.find()
     .then((tasks) => {
       if (!tasks || tasks.length === 0) {
-        // If there are no todos, send an empty array
         return res.json([]);
       }
-      // Otherwise, send the tasks
       return res.json(tasks);
     })
     .catch((error) => {
@@ -59,18 +72,16 @@ app.post("/todo", async (req, res) => {
       return res.status(400).json({ error: "Title is required" });
     }
 
+    // Create a new task with title and optional description
     const newTask = new Task({ title, description });
-    await newTask.save();
-    res.status(201).json(newTask);
+    await newTask.save(); // Save task to MongoDB
+
+    res.status(201).json(newTask); // Respond with the saved task
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to save task" });
   }
 });
-
-// Log the Mongo URI for debugging purposes
-console.log("Mongo URI:", mongoURI);
-
 // Start the server
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
