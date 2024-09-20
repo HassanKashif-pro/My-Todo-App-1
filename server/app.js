@@ -98,6 +98,47 @@ app.post("/sign-in", async (req, res) => {
   }
 });
 
+app.post("/sign-up", async (req, res) => {
+  try {
+    const { email, password, username } = req.body;
+
+    if (!email || !password || !username) {
+      return res
+        .status(400)
+        .json({ error: "Email, username, and password are required" });
+    }
+
+    // Check if the user already exists
+    const existingUser = await findUserByEmail(email); // Replace with your user fetching logic
+    if (existingUser) {
+      return res.status(409).json({ error: "User already exists" });
+    }
+
+    // Hash the password before saving (using bcrypt, for example)
+    const hashedPassword = await hashPassword(password); // Replace with your password hashing logic
+
+    // Create a new user
+    const newUser = await createUser({
+      email,
+      password: hashedPassword,
+      username,
+    }); // Replace with your user creation logic
+
+    // Optionally generate a token here if you want to return it
+    const token = generateToken(newUser); // Replace with your JWT generation logic
+
+    return res.status(201).json({
+      token: token, // or omit this if you don't want to return it on sign-up
+      userId: newUser.id,
+      username: newUser.username,
+      roles: newUser.roles,
+    });
+  } catch (error) {
+    console.error("Error during sign-up:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // POST endpoint to handle incoming data (use POST for creating new tasks)
 app.post("/todo", async (req, res) => {
   try {
