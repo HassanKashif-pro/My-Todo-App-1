@@ -63,6 +63,41 @@ app.get("/todo", (req, res) => {
     });
 });
 
+app.post("/sign-in", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email and password are required" });
+    }
+
+    // Assuming you have a function to find a user by email
+    const user = await findUserByEmail(email); // Replace with your user fetching logic
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Assuming you have a function to validate password
+    const isValidPassword = await validatePassword(password, user.password); // Replace with your password validation logic
+
+    if (!isValidPassword) {
+      return res.status(401).json({ error: "Invalid password" });
+    }
+
+    // If user is found and password is valid, return user data or token
+    return res.status(200).json({
+      token: "your_jwt_token", // Replace with actual JWT token generation
+      userId: user.id,
+      username: user.username,
+      roles: user.roles,
+    });
+  } catch (error) {
+    console.error("Error during sign-in:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // POST endpoint to handle incoming data (use POST for creating new tasks)
 app.post("/todo", async (req, res) => {
   try {
