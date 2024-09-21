@@ -23,8 +23,13 @@ function SignUp() {
     setIsLoading(true);
 
     const data = { username, password, email };
+
     axios
-      .post("http://localhost:4000/sign-up", data)
+      .post("http://localhost:4000/sign-up", data, {
+        headers: {
+          "Content-Type": "application/json", // Ensure you send JSON data
+        },
+      })
       .then((response) => {
         setAuthData(response.data);
         alert("Successfully signed up!");
