@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config(); // Ensure the .env file is correctly loaded
+const bcrypt = require("bcryptjs");
+const User = require("./models/User"); // Adjust this path based on your project
 
 // Create an Express app
 const app = express();
@@ -100,28 +102,31 @@ app.post("/sign-in", async (req, res) => {
 
 app.post("/sign-up", async (req, res) => {
   try {
-    const { username, password, email } = req.body;
+    const { username, email, password } = req.body;
 
-    if (!username || !password || !email) {
+    if (!username || !email || !password) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    console.log("Received sign-up request:", req.body);
 
-    const newUser = new User({
-      username,
-      password,
-      email,
-    });
+    // Check if user already exists
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ error: "User already exists" });
+    }
 
+    // Hash password and create user
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, email, password: hashedPassword });
+
+    // Save user to the database
     await newUser.save();
 
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     console.error("Error during sign-up:", error);
-    return res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
-
 // POST endpoint to handle incoming data (use POST for creating new tasks)
 app.post("/todo", async (req, res) => {
   try {
