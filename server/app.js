@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config(); // Ensure the .env file is correctly loaded
 const bcrypt = require("bcryptjs");
-const User = require("./models/User"); // Adjust this path based on your project
+const User = require("./models/User.js"); // Adjust this path based on your project
+const validatePassword = require("./components/validatePassword.js"); // Adjust this path based on your project
 
 // Create an Express app
 const app = express();
@@ -67,19 +68,21 @@ app.get("/todo", (req, res) => {
 
 app.post("/sign-in", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    if (!email || !password) {
-      return res.status(400).json({ error: "Email and password are required" });
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ error: "Username and password are required" });
     }
 
     // Assuming you have a function to find a user by email
-    const user = await findUserByEmail(email); // Replace with your user fetching logic
+    const user = await User.findOne({ username }); // Replace with your user fetching logic
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-
+    console.log(user);
     // Assuming you have a function to validate password
     const isValidPassword = await validatePassword(password, user.password); // Replace with your password validation logic
 
@@ -115,7 +118,7 @@ app.post("/sign-up", async (req, res) => {
     }
 
     // Hash password and create user
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password);
     const newUser = new User({ username, email, password: hashedPassword });
 
     // Save user to the database
