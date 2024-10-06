@@ -37,6 +37,25 @@ const TaskSchema = new mongoose.Schema({
 // Create a Mongoose model
 const Task = mongoose.model("Task", TaskSchema);
 
+app.post("/todo", async (req, res) => {
+  try {
+    const { title, description } = req.body;
+
+    if (!title) {
+      return res.status(400).json({ error: "Title is required" });
+    }
+
+    // Create a new task with title and optional description
+    const newTask = new Task({ title, description });
+    await newTask.save(); // Save task to MongoDB
+
+    res.status(201).json(newTask); // Respond with the saved task
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to save task" });
+  }
+});
+
 app.delete("/todo", async (req, res) => {
   try {
     const taskId = req.params.id;
@@ -76,13 +95,10 @@ app.post("/sign-in", async (req, res) => {
         .json({ error: "Username and password are required" });
     }
 
-    // Assuming you have a function to find a user by email
     const user = await User.findOne({ username }); // Replace with your user fetching logic
-
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    console.log(user);
     // Assuming you have a function to validate password
     const isValidPassword = await validatePassword(password, user.password); // Replace with your password validation logic
 
@@ -118,9 +134,8 @@ app.post("/sign-up", async (req, res) => {
     }
 
     // Hash password and create user
-    const hashedPassword = await bcrypt.hash(password);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, email, password: hashedPassword });
-
     // Save user to the database
     await newUser.save();
 
@@ -131,24 +146,6 @@ app.post("/sign-up", async (req, res) => {
   }
 });
 // POST endpoint to handle incoming data (use POST for creating new tasks)
-app.post("/todo", async (req, res) => {
-  try {
-    const { title, description } = req.body;
-
-    if (!title) {
-      return res.status(400).json({ error: "Title is required" });
-    }
-
-    // Create a new task with title and optional description
-    const newTask = new Task({ title, description });
-    await newTask.save(); // Save task to MongoDB
-
-    res.status(201).json(newTask); // Respond with the saved task
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to save task" });
-  }
-});
 // Start the server
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
