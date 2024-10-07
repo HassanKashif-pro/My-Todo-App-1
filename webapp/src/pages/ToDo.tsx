@@ -15,29 +15,32 @@ interface Task {
 }
 
 const TodoApp: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]); // Type for tasks array
-  const [newTask, setNewTask] = useState<string>(""); // Type for new task input
-  const [isLoading, setIsLoading] = useState(false); // Loading state
-
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [newTask, setNewTask] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    axios.get<Task[]>("http://localhost:4000/todo").then((response) => {
-      setTasks(response.data);
-    });
+    axios
+      .get("http://localhost:4000/todo")
+      .then((response) => {
+        console.log(response.data); // Check if data is received
+        setTasks(response.data); // Set the tasks in state
+      })
+      .catch((error) => {
+        console.error("Error fetching tasks:", error);
+      });
   }, []);
 
   const handleAddTask = () => {
     if (newTask.trim()) {
-      setIsLoading(true); // Set loading state to true before making the request
-
+      setIsLoading(true); // Set loading state before making the request
       axios
-        .post("http://localhost:4000/todo", { title: newTask })
+        .post("http://localhost:4000/todo", { title: newTask }) // Send task to server
         .then((response) => {
           setTasks([...tasks, response.data]); // Add new task to state
-          setNewTask(""); // Clear input field
+          setNewTask(""); // Clear the input field after successful addition
         })
         .catch((error) => {
           console.error("Error adding task:", error);
-          // Optionally show an error message to the user
           alert("Failed to add task. Please try again.");
         })
         .finally(() => {
@@ -68,7 +71,7 @@ const TodoApp: React.FC = () => {
           <input
             type="checkbox"
             checked={task.isCompleted}
-            // onChange={() => handleToggleComplete(task._id)}
+            onChange={() => handleToggleComplete(task._id)}
           />
           <span>{task.title}</span>
         </div>

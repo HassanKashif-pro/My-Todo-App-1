@@ -33,8 +33,6 @@ const TaskSchema = new mongoose.Schema({
   title: { type: String, required: true }, // Adding validation
   description: String,
 });
-
-// Create a Mongoose model
 const Task = mongoose.model("Task", TaskSchema);
 
 app.post("/todo", async (req, res) => {
