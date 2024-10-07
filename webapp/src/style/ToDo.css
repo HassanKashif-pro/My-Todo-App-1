@@ -70,6 +70,7 @@ body {
   box-shadow: inset 0px -2.4px 5px rgba(247, 247, 247, 0.1),
     inset 0px 3.8px 9px rgba(34, 30, 30, 0.5); /* Black shadow at the top */
 }
+
 .arrow-btn {
   position: fixed;
   bottom: 18px; /* Distance from the bottom */
@@ -85,10 +86,12 @@ body {
   background-color: transparent !important; /* Hover color */
   color: #ffffff !important; /* Hover text color */
 }
+
 .content {
   background-color: #38404b;
   overflow: hidden;
 }
+
 .h1-todo {
   color: #94adcf; /* Text color */
   font-size: 3rem; /* Font size */
@@ -97,8 +100,10 @@ body {
   height: flex;
   font-family: "Roboto";
 }
+
 .task-list {
-  display: flex;
+  width: 50% !important;
+  display: flex !important;
   color: #94adcf;
   align-items: center;
   background-color: #38404b; /* Adjust to your background color */
@@ -109,7 +114,6 @@ body {
   margin-bottom: 30px;
   gap: 20px; /* Space between the tasks */
   justify-items: center; /* Align items horizontally in the center */
-  width: 50%; /* Full width */
 }
 
 .task-list.completed {
@@ -144,6 +148,7 @@ body {
     flex-direction: column;
   }
 }
+
 /* Custom checkbox size and color */
 .check-box .ant-checkbox-inner {
   border-radius: 40px;
